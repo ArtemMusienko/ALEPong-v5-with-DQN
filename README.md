@@ -1,21 +1,23 @@
-![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)![Google Colab](https://img.shields.io/badge/Google%20Colab-%23F9A825.svg?style=for-the-badge&logo=googlecolab&logoColor=white)![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)	![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)![Google Colab](https://img.shields.io/badge/Google%20Colab-%23F9A825.svg?style=for-the-badge&logo=googlecolab&logoColor=white)![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
 
 ## ALE/Pong-v5 with DQN
 
-В данном коде используется такая среда обучения, как **ALE/Pong-v5**. 1.  Реализована нейросетевая архитектура на полносвязных слоях, определены классы  `NNModel`  и  `DQN`, реализующие предсказательную и целевую сети, буфер воспроизведения, ε-жадную стратегию, синхронизацию весов и шаг обучения, реализован цикл обучения агента с ε-жадной стратегией и постепенным уменьшением ε, а также график динамики награды по эпизодам.
+[![ru](https://img.shields.io/badge/README_на_русском-2A2C39?style=for-the-badge&logo=github&logoColor=white)](README.ru.md)  
 
-Разберемся в базовых понятиях кода:
+This code uses a training environment such as **ALE/Pong-v5**. A neural network architecture based on fully connected layers is implemented, and the classes `NNModel` and `DQN` are defined to implement the prediction and target networks, the replay buffer, the ε-greedy strategy, weight synchronization, and the learning step. The agent's training cycle with the ε-greedy strategy and gradual reduction of ε is implemented, as well as a graph showing the reward dynamics over episodes.
 
-**ε-жадная стратегия (epsilon-greedy)** — это метод балансировки между исследованием и использованием в обучении с подкреплением. Перед каждым действием агент с вероятностью ε (например, 10%) выбирает случайное действие для исследования среды, а с вероятностью (1-ε) — лучшее известное действие для максимизации текущей награды. Таким образом, один параметр ε задаёт простой и эффективный компромисс между изучением нового и использованием известного.
+Let's understand the basic concepts of the code:
 
-**DQN (Deep Q-Network)** — это гибридный метод, который обучает глубокую нейронную сеть предсказывать будущие награды (Q-значения) для различных действий, позволяя агенту принимать эффективные решения на основе сложных входных данных, например, пикселей игры. Его ключевая идея — стабилизация нестабильного обучения с помощью **опытного воспроизведения** (случайная выборка из памяти) и **целевой сети** (отдельная сеть для расчёта эталонных значений).
+**ε-greedy strategy (epsilon-greedy)** is a method of balancing between exploration and exploitation in reinforcement learning. Before each action, the agent chooses a random action to explore the environment with a probability of ε (e.g., 10%), and chooses the best known action to maximize the current reward with a probability of (1-ε). Thus, the single parameter ε sets a simple and effective trade-off between learning new things and exploiting what is known.
 
-В финальной части notebook приведён анализ поведения агента и вывод.
+**DQN (Deep Q-Network)** is a hybrid method that trains a deep neural network to predict future rewards (Q-values) for different actions, allowing the agent to make effective decisions based on complex input data, such as game pixels. Its key idea is to stabilize unstable learning by using **experience replay** (random sampling from memory) and **target network** (a separate network for calculating reference values).
 
-> Настоятельно рекомендую код запускать в **Google Colab** с
-> использованием **графического ускорителя T4**!
+The final part of the notebook provides an analysis of the agent's behavior and an output.
 
-<div align="center">
+> I strongly recommend running the code in **Google Colab** with
+> the use of **T4 GPU**!
+
+<div  align="center">
 
 ![enter image description here](https://ale.farama.org/_images/pong.gif)
 
